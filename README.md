@@ -13,7 +13,9 @@ This repository contains a foundational collection of core digital logic circuit
 * **Subtractors**: Half Subtractor and Full Subtractor.
 * **Multiplexers**: 2x1 MUX and 4x1 MUX.
 * **Demultiplexers**: 1x2 DEMUX and 1x4 DEMUX.
-* **Encoder**: 4-to-2 Encoder
+* **Encoder**: 4-to-2 Encoder and 4-to-2 Priority Encoder
+* **Decoder**: 4-to-2 Decoder
+* **Latch**: SR latch
 
 ## Simulation Details
 * Every module in the `RTL/` directory has a dedicated testbench prefixed with `tb_` in the `Testbench/` folder.
