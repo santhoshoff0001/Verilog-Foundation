@@ -16,6 +16,7 @@ This repository contains a foundational collection of core digital logic circuit
 * **Encoder**: 4-to-2 Encoder and 4-to-2 Priority Encoder
 * **Decoder**: 4-to-2 Decoder
 * **Latch**: SR latch, D latch, T latch and JK latch
+* **Flipflop**: T-flipflop
 
 ## Simulation Details
 * Every module in the `RTL/` directory has a dedicated testbench prefixed with `tb_` in the `Testbench/` folder.
