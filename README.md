@@ -17,7 +17,7 @@ This repository contains a foundational collection of core digital logic circuit
 * **Decoder**: 4-to-2 Decoder
 * **Latch**: SR latch, D latch, T latch and JK latch
 * **Flipflop**: T-flipflop and SR-flipflop
-* **Shift register**: SISO
+* **Shift register**: SISO, SIPO and PISO
 
 ## Simulation Details
 * Every module in the `RTL/` directory has a dedicated testbench prefixed with `tb_` in the `Testbench/` folder.
