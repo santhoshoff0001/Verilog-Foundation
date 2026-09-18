@@ -1,38 +1,51 @@
 # Verilog-Foundation
 
 ## Overview
-This repository contains a foundational collection of core digital logic circuits implemented in Verilog. It serves as a building block for understanding combinatorial logic and basic hardware design. 
+This repository contains a foundational collection of core digital logic circuits implemented in Verilog. It serves as a structured reference for understanding combinational and sequential hardware design fundamentals.
 
 ## Repository Structure
-* **`RTL/`**: Contains all the synthesizable Verilog design files.
-* **`Testbench/`**: Contains the corresponding simulation files used to verify the functionality of each design.
-* **`.gitignore`**: Excludes temporary simulation logs, waveform dumps, and tool-generated build files.
+The codebase is separated by domain, keeping synthesizable designs and their verification environments self-contained:
+
+* **`combinational/`**:
+  * `rtl/`: Synthesizable Verilog source files for combinational logic.
+  * `tb/`: Corresponding testbench verification files.
+* **`sequential/`**:
+  * `rtl/`: Synthesizable Verilog source files for clock-dependent and state-holding circuits.
+  * `tb/`: Corresponding testbench verification files.
+* **`.gitignore`**: Excludes temporary simulation artifacts, waveform dumps (`.vcd`), and tool-generated build files.
 
 ## Included Modules
+
+### Combinational Logic
 * **Adders**: Half Adder, Full Adder, BCD Adder, and Ripple Carry Adder (RCA).
 * **Subtractors**: Half Subtractor and Full Subtractor.
 * **Multiplexers**: 2x1 MUX and 4x1 MUX.
 * **Demultiplexers**: 1x2 DEMUX and 1x4 DEMUX.
-* **Encoder**: 4-to-2 Encoder and 4-to-2 Priority Encoder
-* **Decoder**: 4-to-2 Decoder
-* **Latch**: SR latch, D latch, T latch and JK latch
-* **Flipflop**: T-flipflop and SR-flipflop
-* **Shift register**: SISO, SIPO ,PISO and PIPO
+* **Encoders**: 4-to-2 Encoder and 4-to-2 Priority Encoder.
+* **Decoders**: 2-to-4 Decoder.
+
+### Sequential Logic
+* **Latches**: SR Latch, D Latch, T Latch, and JK Latch.
+* **Flip-Flops**: SR Flip-Flop and T Flip-Flop.
+* **Shift Registers**: SISO, SIPO, PISO, and PIPO.
 
 ## Simulation Details
-* Every module in the `RTL/` directory has a dedicated testbench prefixed with `tb_` in the `Testbench/` folder.
-* Both the testbench file and the source RTL file must be provided to the compiler to run the simulation successfully.
-* The testbenches include `$dumpfile` and `$dumpvars` commands to generate `.vcd` (Value Change Dump) files for waveform analysis.
-* Real-time signal changes are printed to the simulation console using the `$monitor` command.
+* Every module has a dedicated testbench located in the adjacent `tb/` folder.
+* Both the RTL source and testbench files must be passed to the compiler for simulation.
+* Testbenches include `$dumpfile` and `$dumpvars` to dump Value Change Dump (`.vcd`) files for waveform inspection.
+* Console logging uses `$monitor` or `$display` to log signal transitions during simulation runs.
 
 ## Supported Tools
-* **Simulation & Synthesis**: Compatible with standard EDA environments like Xilinx Vivado, GOWIN EDA, or Icarus Verilog.
-* **Waveform Viewing**: Generated `.vcd` files can be viewed using tools like GTKWave or built-in EDA waveform viewers.
+* **Simulation & Synthesis**: Compatible with standard EDA environments like Icarus Verilog, Gowin EDA, or Xilinx Vivado.
+* **Waveform Viewing**: Generated `.vcd` files can be inspected using GTKWave or integrated EDA viewers.
 
 ## Quick Start Example: Running a Simulation
 
-Here is a step-by-step example of how to compile and simulate the Half Adder module from the root directory using Icarus Verilog (`iverilog`) and GTKWave.
+Step-by-step example running the Half Adder simulation from the root directory using Icarus Verilog (`iverilog`) and GTKWave:
 
-* **1. Compile the design:** `iverilog -o sim_out RTL/half_adder.v Testbench/tb_half_adder.v`
-* **2. Run the simulation:** `vvp sim_out`
-* **3. View the waveforms:** `gtkwave half_adder.vcd`
+* **1. Compile the design:**  
+  `iverilog -o sim_out combinational/rtl/half_adder.v combinational/tb/tb_half_adder.v`
+* **2. Run the simulation:**  
+  `vvp sim_out`
+* **3. View the waveforms:**  
+  `gtkwave half_adder.vcd`
